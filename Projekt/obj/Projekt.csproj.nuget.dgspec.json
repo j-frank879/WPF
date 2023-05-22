@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asiun\\source\\repos\\Projekt\\Projekt\\Projekt.csproj": {}
+    "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asiun\\source\\repos\\Projekt\\Projekt\\Projekt.csproj": {
+    "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asiun\\source\\repos\\Projekt\\Projekt\\Projekt.csproj",
+        "projectUniqueName": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj",
         "projectName": "Projekt",
-        "projectPath": "C:\\Users\\asiun\\source\\repos\\Projekt\\Projekt\\Projekt.csproj",
+        "projectPath": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj",
         "packagesPath": "C:\\Users\\asiun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asiun\\source\\repos\\Projekt\\Projekt\\obj\\",
+        "outputPath": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asiun\\AppData\\Roaming\\NuGet\\NuGet.Config",

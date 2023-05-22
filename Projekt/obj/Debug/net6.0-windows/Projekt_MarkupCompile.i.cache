@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\asiun\source\repos\Projekt\Projekt\obj\Debug\net6.0-windows\
+C:\Users\asiun\OneDrive\Pulpit\WPF\Projekt\obj\Debug\net6.0-windows\
 Projekt
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\asiun\source\repos\Projekt\Projekt\App.xaml
-11407045341
+C:\Users\asiun\OneDrive\Pulpit\WPF\Projekt\App.xaml
+21940794329
 
-5731044074
+61660383786
 194101785492
-MainWindow.xaml;
+MainWindow.xaml;Window1.xaml;
 
-False
+True
 

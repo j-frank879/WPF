@@ -7,6 +7,69 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0" Margin="0 10 0 0">
+                    <Label Content="Liczba testów:" Margin="20 0"/>
+                    <TextBox Padding="30 0" Margin="0 2" />
+                    <Button Content="Generuj testy" Margin="20 0" />
+                </WrapPanel>
+                <GroupBox Margin="0 15 0 0" Grid.Row="1" Header="Pytanie">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Treść pytania:" Margin="10 0 10 0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="0 2"  />
+                        </Grid>
+                        <Grid Grid.Row="1" >
+                           
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+              
+
+
+                
+            </Grid>
+            
+        </Grid>
     </Grid>
 </Window>
