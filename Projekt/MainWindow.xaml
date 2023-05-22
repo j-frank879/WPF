@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Generator testów" Height="450" Width="800" Name="Pytania_Window">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10"/>
+                <ListBox Name="lista" Margin="10"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -38,7 +38,7 @@
                 </Grid.RowDefinitions>
                 <WrapPanel Grid.Row="0" Margin="0 10 0 0">
                     <Label Content="Liczba testów:" Margin="20 0"/>
-                    <TextBox Padding="30 0" Margin="0 2" />
+                    <TextBox Name="l_testowTextBox" Text="0" Width="100" TextChanged="l_testowChanged" HorizontalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="0 2"  />
                     <Button Content="Generuj testy" Margin="20 0" />
                 </WrapPanel>
                 <GroupBox Margin="0 15 0 0" Grid.Row="1" Header="Pytanie">
