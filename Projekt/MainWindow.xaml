@@ -50,26 +50,27 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="28*"/>
+                                <ColumnDefinition Width="103*"/>
+                                <ColumnDefinition Width="391*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Treść pytania:" Margin="10 0 10 0"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="0 2"  />
+                            <Label Content="Treść pytania:" Margin="10,0,10,0" Grid.ColumnSpan="2"/>
+                            <TextBox Grid.Column="1" TextWrapping="Wrap" Margin="102,2,0,2" Grid.ColumnSpan="2"  />
                         </Grid>
                         <Grid Grid.Row="1" >
-                           
+
                         </Grid>
                         <Grid Grid.Row="2">
                             <Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                         </Grid>
                     </Grid>
                 </GroupBox>
-              
 
 
-                
+
+
             </Grid>
-            
+
         </Grid>
     </Grid>
 </Window>

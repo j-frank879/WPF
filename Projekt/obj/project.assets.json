@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\asiun\\.nuget\\packages\\": {}
+    "C:\\Users\\TeaLo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj",
+      "projectUniqueName": "C:\\Users\\TeaLo\\Source\\Repos\\WPF\\Projekt\\Projekt.csproj",
       "projectName": "Projekt",
-      "projectPath": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\Projekt.csproj",
-      "packagesPath": "C:\\Users\\asiun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asiun\\OneDrive\\Pulpit\\WPF\\Projekt\\obj\\",
+      "projectPath": "C:\\Users\\TeaLo\\Source\\Repos\\WPF\\Projekt\\Projekt.csproj",
+      "packagesPath": "C:\\Users\\TeaLo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TeaLo\\Source\\Repos\\WPF\\Projekt\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\asiun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TeaLo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
