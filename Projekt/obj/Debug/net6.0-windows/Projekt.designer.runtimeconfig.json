@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\TeaLo\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\TeaLo\\.nuget\\packages"
+      "C:\\Users\\asiun\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\asiun\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
