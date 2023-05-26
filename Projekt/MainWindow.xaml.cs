@@ -47,5 +47,11 @@ namespace Projekt
             else l_testow= Int32.Parse(l_testowTextBox.Text);
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TestsWindow testsWindow = new TestsWindow();
+            testsWindow.Show();
+        }
     }
 }

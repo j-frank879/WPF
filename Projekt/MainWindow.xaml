@@ -39,7 +39,7 @@
                 <WrapPanel Grid.Row="0" Margin="0 10 0 0">
                     <Label Content="Liczba testów:" Margin="20 0"/>
                     <TextBox Name="l_testowTextBox" Text="0" Width="100" TextChanged="l_testowChanged" HorizontalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="0 2"  />
-                    <Button Content="Generuj testy" Margin="20 0" />
+                    <Button Content="Generuj testy" Margin="20 0" Click="Button_Click" />
                 </WrapPanel>
                 <GroupBox Margin="0 15 0 0" Grid.Row="1" Header="Pytanie">
                     <Grid>
