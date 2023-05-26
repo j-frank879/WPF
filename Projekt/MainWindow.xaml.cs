@@ -23,6 +23,9 @@ namespace Projekt
     public partial class MainWindow : Window
     {
         public int l_testow { get; set; }
+        public int l_odpowiedzi { get; set; }
+
+        public static Pytanie pytanie { get; set; }
         public Collection<Pytanie> Pytania { get; } = new ObservableCollection<Pytanie>();
         public MainWindow()
         {
@@ -47,7 +50,14 @@ namespace Projekt
             else l_testow= Int32.Parse(l_testowTextBox.Text);
 
         }
+        private void l_odpowiedziChanged(object sender, TextChangedEventArgs e)
+        {
+            if (l_odpowiedziTextBox.Text == "")
+                l_odpowiedziTextBox.Text = "2";
+            else l_odpowiedzi = Int32.Parse(l_odpowiedziTextBox.Text);
 
+            if (l_odpowiedzi > 20) l_odpowiedziTextBox.Text = "20";
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TestsWindow testsWindow = new TestsWindow();
