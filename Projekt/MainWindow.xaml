@@ -13,12 +13,14 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
+                <MenuItem Header="_Wczytaj pliki">
+                    <MenuItem Header="_Wczytaj listę pytań" />
+                    <MenuItem Header="_Wczytaj test" />
+                </MenuItem>
+                <MenuItem Header="_Zapisz listę pytań">
+                </MenuItem>
+
+                <MenuItem Header="_Generuj testy">
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -31,25 +33,23 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <ListBox Name="lista" Margin="10">
-                    <StackPanel  Orientation="Horizontal" >
-                        <Label Content="Tresc Pytania 1" Width="178"/>
-                        <Image Width="30" Height="30" Source="/pobrane.png" />
-                        <Image Width="30" Height="30" Source="/transparent-trash-icon-bin-icon-pollution-icon-5e0a20e261c162.5470446815777220824004.jpg" HorizontalAlignment="Right" />
-                    </StackPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="3" Text="{Binding Tresc}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
-                <WrapPanel Grid.Row="0" Margin="0 10 0 0">
-                    <Label Content="Liczba testów:" Margin="20 0"/>
-                    <TextBox Name="l_testowTextBox" Text="0" Width="100" TextChanged="l_testowChanged" HorizontalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="0 2"  />
-                    <Button Content="Generuj testy" Margin="20 0" Click="Button_Click" />
-                </WrapPanel>
+                <WrapPanel Grid.Row="0" Margin="0 10 0 0"/>
                 <GroupBox Margin="0 15 0 0" Grid.Row="1" Header="Pytanie">
-                    <Grid>
+                    <Grid Name="pytanieGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -59,7 +59,7 @@
                         </Grid.RowDefinitions>
                         <WrapPanel Grid.Row="0" >
                             <Label Content="Liczba odpowiedzi:" Margin="10 0 10 0"/>
-                            <TextBox Name="l_odpowiedziTextBox" Text="2" Width="30" TextChanged="l_testowChanged" HorizontalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="0 2"  />
+                            <TextBox Name="l_odpowiedziTextBox" Text="2" Width="30" TextChanged="l_odpowiedziChanged" LostFocus="l_odpowiedziTextBox_LostFocus" HorizontalContentAlignment="Center" PreviewTextInput="NumberValidationTextBox" Margin="0 2"  />
                         </WrapPanel>
                         <Grid Grid.Row="1" Margin="0 10 " >
                             <Grid.ColumnDefinitions>
@@ -67,52 +67,45 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Treść pytania:" Margin="10 0 10 0"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Text="Tresc pytania 1" TextWrapping="Wrap" Margin="0 2"  />
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Path=Tresc}" TextWrapping="Wrap" Margin="0 2"  />
                         </Grid>
                         <ScrollViewer Grid.Row="2">
                             <Grid Name="odpowiedziGrid">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
 
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
 
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
 
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
-                                    <RowDefinition MinHeight="30" Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
 
                                 </Grid.RowDefinitions>
-
-                                <WrapPanel Grid.Row="0">
-                                    <CheckBox Margin="10" IsChecked="True"/>
-                                    <TextBox Margin="5" Width="300"  Text="odpowiedz 1" TextWrapping="Wrap"/>
-                                </WrapPanel>
-                                <WrapPanel Grid.Row="1">
-                                    <CheckBox Margin="10"/>
-                                    <TextBox Margin="5" Width="300"  Text="odpowiedz 2" TextWrapping="Wrap"/>
-                                </WrapPanel>
-
                             </Grid>
                         </ScrollViewer>
 
-                        <Grid Grid.Row="3">
-                            <Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                        </Grid>
+                        <WrapPanel FlowDirection="RightToLeft" Grid.Row="3">
+                            <Button Content="Usun " Padding="10 5" Margin="10 10 50 10 " />
+                            <Button Content="Dodaj " Padding="10 5" Margin="10 " />
+                            <Button Content="Edytuj " Padding="10 5" Margin="10 " />
+                            
+                        </WrapPanel>
                     </Grid>
                 </GroupBox>
               

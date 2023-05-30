@@ -8,6 +8,7 @@ namespace Projekt
 {
     public class Pytanie
     {
+        Pytanie() { tresc = ""; odpowiedzi = new List<Odpowiedz>(); }
         Pytanie(String tresc,List<Odpowiedz> odpowiedzi)
         {
             this.tresc = tresc;
