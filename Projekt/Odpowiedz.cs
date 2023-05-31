@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 namespace Projekt
 {
    public class Odpowiedz
-    { Odpowiedz(String tresc, Boolean poprawnosc)
+    { public Odpowiedz() { tresc = "odpowiedz";poprawnosc = true; }
+        public Odpowiedz(String tresc, bool poprawnosc)
         {
             this.tresc = tresc;
             this.poprawnosc = poprawnosc;
         }
         private String tresc { get; set; }
-        private Boolean poprawnosc { get; set; }
+        private bool poprawnosc { get; set; }
 
     }
 }

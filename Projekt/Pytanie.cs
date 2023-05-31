@@ -8,23 +8,22 @@ namespace Projekt
 {
     public class Pytanie
     {
-        Pytanie() { tresc = ""; odpowiedzi = new List<Odpowiedz>(); }
-        Pytanie(String tresc,List<Odpowiedz> odpowiedzi)
+        public String Tresc { get; set; }
+        public List<Odpowiedz> Odpowiedzi { get; set; }
+        public Pytanie() { Tresc = "test"; Odpowiedzi = new List<Odpowiedz>(); }
+        public Pytanie(String tresc,List<Odpowiedz> odpowiedzi)
         {
-            this.tresc = tresc;
-            this.odpowiedzi= odpowiedzi;
+                Tresc = tresc;
+            Odpowiedzi = odpowiedzi;
 
         }
-        Pytanie(String tresc)
+       public  Pytanie(String tresc)
         {
-            this.tresc = tresc;
-            this.odpowiedzi = new List<Odpowiedz>();
+            Tresc = tresc;
+            Odpowiedzi = new List<Odpowiedz>();
 
         }
-        private String tresc { get; set; }
-        private List<Odpowiedz> odpowiedzi { get; set; }
+        
 
-        public void addOdpowiedz(Odpowiedz o) { odpowiedzi.Add(o); }
-        public void clearOdpowiedzi(Odpowiedz o) { odpowiedzi.Clear(); }
     }
 }
