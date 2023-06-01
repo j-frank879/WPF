@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekt
+namespace WpfApp6
 {
     /// <summary>
     /// Logika interakcji dla klasy TestsWindow.xaml

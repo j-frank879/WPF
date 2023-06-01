@@ -1,0 +1,85 @@
+﻿<Window x:Class="WpfApp6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Wczytaj pliki">
+                    <MenuItem Header="_Wczytaj listę pytań" />
+                    <MenuItem Header="_Wczytaj test" />
+                </MenuItem>
+                <MenuItem Header="_Zapisz listę pytań">
+                </MenuItem>
+
+                <MenuItem Header="_Generuj testy" Click="Button_Click">
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="listaPytan" Margin="10" DisplayMemberPath="Display"></ListBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0" Margin="0 10 0 0">
+                    <Button Padding="10 5"  Content="Dodaj pytanie" Margin="10" Click="dodajPytanieClick"/>
+                    <Button Padding="10 5" Content="Usuń pytanie" Margin="10" Click="usunPytanieClick"/>
+                    <TextBlock Name="bladTextBlock"/>
+                </WrapPanel>
+                <GroupBox Margin="0 15 0 0" Grid.Row="1" Header="Pytanie">
+                    <Grid Name="pytanieGrid" DataContext="{Binding ElementName=listaPytan, Path=SelectedItem}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition />
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label  Padding="25 5 0 5" Margin="5" Content="Treść pytania:" Grid.Column="0" Grid.Row="0"/>
+                        <TextBox Text="{Binding Tresc}" Margin="5" Grid.Row="0" Grid.Column="1"/>
+
+                        <ListBox Name="listaOdpowiedzi" ItemsSource="{Binding Odpowiedzi}" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <CheckBox IsChecked="{Binding Poprawnosc}" Margin="5" />
+                                        <TextBox  Margin="5" Text="{Binding Tresc}" VerticalAlignment="Stretch" />
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        
+                        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Button Content="Dodaj odpowiedź" Click="dodajOdpowiedzClick" Margin="10"/>
+                            <Button Content="Usuń odpowiedź" Click="usunOdpowiedzClick" Margin="10"/>
+                        </WrapPanel>
+
+                    </Grid>
+                </GroupBox>
+
+
+
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
