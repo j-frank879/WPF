@@ -17,7 +17,7 @@ namespace WpfApp6
         public Pytanie(string tresc)
         {
             this.tresc = tresc;
-          
+            this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
             this.Odpowiedzi.Add(new Odpowiedz("Poprawna odpowiedz", true));
             this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
         }
