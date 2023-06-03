@@ -20,7 +20,7 @@
                 <MenuItem Header="_Zapisz listę pytań">
                 </MenuItem>
 
-                <MenuItem Header="_Generuj testy" Click="Button_Click">
+                <MenuItem Header="_Generuj testy" Click="generujTestyClick">
                 </MenuItem>
             </Menu>
         </DockPanel>

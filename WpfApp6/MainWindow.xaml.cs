@@ -26,6 +26,8 @@ namespace WpfApp6
     public partial class MainWindow : Window
     {
         public Collection<Pytanie> Pytania { get; } = new ObservableCollection<Pytanie>();
+        public int wybranaLiczbaPytan;
+        public int wybranaLiczbaTestow;
         public MainWindow()
         {
             InitializeComponent();
@@ -46,10 +48,20 @@ namespace WpfApp6
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            TestsWindow testsWindow = new TestsWindow();
-            testsWindow.Show();
+        private void generujTestyClick(object sender, RoutedEventArgs e)
+        {GeneracjaTestowWindow generacjaTestowWindow = new GeneracjaTestowWindow(Pytania.Count);
+            generacjaTestowWindow.ShowDialog();
+            if (generacjaTestowWindow.DialogResult == true)
+            {
+                wybranaLiczbaPytan = Int32.Parse(generacjaTestowWindow.l_PytanTextBox.Text);
+                wybranaLiczbaTestow = Int32.Parse(generacjaTestowWindow.l_TestowTextBox.Text);
+                //generacja testow
+
+                TestsWindow testsWindow = new TestsWindow();
+                testsWindow.Show();
+            }
+
+           
         }
 
         private void dodajPytanieClick(object sender, RoutedEventArgs e)
