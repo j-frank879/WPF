@@ -10,16 +10,16 @@ namespace WpfApp6
 {
     public class ImportPytan
     {
-        Collection<Pytanie> pytania = new Collection<Pytanie>();
+        List<Pytanie> pytania = new List<Pytanie>();
 
-        public Collection<Pytanie> Import()
+        public List<Pytanie> Import()
         {
             var lines = File.ReadLines(@"..\..\..\ZestawPytan.txt");
-            Collection<Pytanie> pytania = new Collection<Pytanie>();
+            List<Pytanie> pytania = new List<Pytanie>();
 
             foreach (var line in lines)
             {
-                Collection<Odpowiedz> odpowiedzi = new Collection<Odpowiedz>();
+                List<Odpowiedz> odpowiedzi = new List<Odpowiedz>();
                 string[] element = line.Split(";;");
 
                 for (int i = 1; i < element.Length; i = i + 2)
