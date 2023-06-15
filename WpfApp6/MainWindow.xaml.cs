@@ -31,6 +31,8 @@ namespace WpfApp6
         public MainWindow()
         {
             InitializeComponent();
+            ImportPytan zaladujPytania = new ImportPytan();
+            Pytania = zaladujPytania.Import();
             Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
             Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
             Pytania.Add(new Pytanie("Przykladowe pytanie 3"));

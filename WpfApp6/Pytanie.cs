@@ -27,7 +27,11 @@ namespace WpfApp6
             this.Odpowiedzi.Add(new Odpowiedz());
             this.Odpowiedzi.Add(new Odpowiedz());
         }
-
+        public Pytanie(string tresc, Collection<Odpowiedz> odpowiedzi)
+        {
+            this.tresc = tresc;
+            this.Odpowiedzi = odpowiedzi;
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
