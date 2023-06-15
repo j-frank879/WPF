@@ -1,0 +1,6 @@
+﻿Pytanie pierwsze;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
+Pytanie drugie;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
+Pytanie trzecie;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
+Pytanie czwarte;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
+Pytanie piąte;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
+Pytanie szóste;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
