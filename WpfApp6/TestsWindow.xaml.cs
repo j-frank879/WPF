@@ -20,23 +20,10 @@ namespace WpfApp6
     /// </summary>
     public partial class TestsWindow : Window
     {
-        Collection<Collection<Pytanie>> testy;
-        public TestsWindow(Collection<Pytanie> pytania, int wybranaLiczbaPytan, int wybranaLiczbaTestow)
+        Collection<Test> testy;
+        public TestsWindow(Collection<Test> testy)
         {
-            Random rnd = new Random();
-            List<int> indeksy;
-            testy = new Collection<Collection<Pytanie>>();
-            for(int i = 0;  i < wybranaLiczbaTestow; i++)
-            {
-                indeksy = Enumerable.Range(0, pytania.Count).ToList();
-                testy.Add(new Collection<Pytanie>());
-                for(int j = 0; j < wybranaLiczbaPytan; j++)
-                {
-                    int indeks = rnd.Next(0, pytania.Count-j);
-                    testy[i].Add(pytania[indeksy[indeks]]);
-                    indeksy.RemoveAt(indeks);
-                }
-            }
+            this.testy = testy;
             InitializeComponent();
         }
     }
