@@ -57,7 +57,7 @@ namespace WpfApp6
                 wybranaLiczbaTestow = Int32.Parse(generacjaTestowWindow.l_TestowTextBox.Text);
                 //generacja testow
                 Collection<Test> tests = generujTesty();
-                TestsWindow testsWindow = new TestsWindow();
+                TestsWindow testsWindow = new TestsWindow(Pytania,wybranaLiczbaPytan,wybranaLiczbaTestow);
                 testsWindow.Show();
             }
 

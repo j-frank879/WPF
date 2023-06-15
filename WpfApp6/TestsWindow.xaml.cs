@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,23 @@ namespace WpfApp6
     /// </summary>
     public partial class TestsWindow : Window
     {
-        public TestsWindow()
+        Collection<Collection<Pytanie>> testy;
+        public TestsWindow(Collection<Pytanie> pytania, int wybranaLiczbaPytan, int wybranaLiczbaTestow)
         {
+            Random rnd = new Random();
+            List<int> indeksy;
+            testy = new Collection<Collection<Pytanie>>();
+            for(int i = 0;  i < wybranaLiczbaTestow; i++)
+            {
+                indeksy = Enumerable.Range(0, pytania.Count).ToList();
+                testy.Add(new Collection<Pytanie>());
+                for(int j = 0; j < wybranaLiczbaPytan; j++)
+                {
+                    int indeks = rnd.Next(0, pytania.Count-j);
+                    testy[i].Add(pytania[indeksy[indeks]]);
+                    indeksy.RemoveAt(indeks);
+                }
+            }
             InitializeComponent();
         }
     }
