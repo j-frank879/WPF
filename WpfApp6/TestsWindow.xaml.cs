@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,10 @@ namespace WpfApp6
     /// </summary>
     public partial class TestsWindow : Window
     {
-        public TestsWindow()
+        Collection<Test> testy;
+        public TestsWindow(Collection<Test> testy)
         {
+            this.testy = testy;
             InitializeComponent();
         }
     }
