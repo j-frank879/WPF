@@ -130,7 +130,7 @@ namespace WpfApp6
                     tmp_pytania.RemoveAt(randPytanie);
 
                 }
-                testy.Add(new Test(pytaniaTestu));
+                testy.Add(new Test(pytaniaTestu, i));
             }
             
             return testy;

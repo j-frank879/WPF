@@ -20,11 +20,15 @@ namespace WpfApp6
     /// </summary>
     public partial class TestsWindow : Window
     {
-        Collection<Test> testy;
+        ObservableCollection<Test> testy { get; } = new ObservableCollection<Test>();
         public TestsWindow(Collection<Test> testy)
         {
-            this.testy = testy;
+            this.testy = (ObservableCollection<Test>?)testy;
             InitializeComponent();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            testsList.ItemsSource = testy;
         }
     }
 }

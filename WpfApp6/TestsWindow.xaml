@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp6"
         mc:Ignorable="d"
-        Title="Generator testów" Height="450" Width="800" >
+        Title="Testy" Height="450" Width="800" Loaded="Window_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,12 +32,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <ListBox Name="testsList" Margin="10">
-                    <Label Content="Test 1"/>
-                </ListBox>
-            </Grid>
-            <GroupBox Margin="0 15 0 0" Grid.Column="1" Header="Test [id]">
+            <ListBox Name="testsList" Margin="10" DisplayMemberPath="Display" SelectedIndex="0"></ListBox>
+            <GroupBox Name="test" Margin="0 15 0 0" Grid.Column="1" Header="{Binding Display}" DataContext="{Binding ElementName=testsList, Path=SelectedItem}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -45,20 +41,34 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" >
                         <ScrollViewer>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Vertical">
-                                    <Label Content="Pytanie 1" Margin="10 0 10 0"/>
-                                    <Label Content="Treść pytania" Margin="10 0 10 0"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
-                                        <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
+                            <ItemsControl  Name="testPytania" ItemsSource="{Binding Pytania}" >
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="{Binding ID}" Margin="10 0 10 0"/>
+                                            <Label Content="{Binding Tresc}" Margin="10 0 10 0"/>
+                                            <!--<StackPanel Orientation="Horizontal">
+                                                <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
+                                                <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
+                                            </StackPanel>-->
+                                            <ItemsControl  Name="listaOdpowiedzi" ItemsSource="{Binding Odpowiedzi}" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <WrapPanel>
+                                                            <CheckBox IsHitTestVisible="false" IsChecked="False"  Margin="5" />
+                                                            <Label  Margin="5" Content="{Binding Tresc}" VerticalAlignment="Stretch" />
+                                                        </WrapPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                        <!--<Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
                     </Grid>
                 </Grid>
             </GroupBox>

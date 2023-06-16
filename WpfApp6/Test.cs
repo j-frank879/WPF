@@ -10,15 +10,18 @@ namespace WpfApp6
 {
     public class Test : INotifyPropertyChanged
     {
-
+        public int id;
+        public int Id { get { return id; } set { id = value; } }
         public Collection<Pytanie> Pytania { get; set; } = new ObservableCollection<Pytanie>();
-        public Test()
+        public Test(int id)
         {
             Pytania = new ObservableCollection<Pytanie>();
+            this.id = id+1;
         }
-        public Test(Collection<Pytanie> pytania)
+        public Test(Collection<Pytanie> pytania, int id)
         {
             this.Pytania = pytania;
+            this.id = id + 1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -28,6 +31,14 @@ namespace WpfApp6
                 PropertyChanged(this,
                 new PropertyChangedEventArgs(property));
         }
-        
+
+        public string Display
+        {
+            get
+            {
+                return "Test "+id.ToString();
+            }
+
+        }
     }
 }
