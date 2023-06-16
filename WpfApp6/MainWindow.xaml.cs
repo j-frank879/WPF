@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -31,8 +32,9 @@ namespace WpfApp6
         public MainWindow()
         {
             InitializeComponent();
-            ImportPytan zaladujPytania = new ImportPytan();
-            Pytania = zaladujPytania.Import();
+            List<Pytanie> zaladujPytania = new ImportPytan().Import();
+            zaladujPytania.ForEach(Pytania.Add);
+
             Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
             Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
             Pytania.Add(new Pytanie("Przykladowe pytanie 3"));
