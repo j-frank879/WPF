@@ -17,9 +17,9 @@ namespace WpfApp6
         public Pytanie(string tresc)
         {
             this.tresc = tresc;
-            this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
-            this.Odpowiedzi.Add(new Odpowiedz("Poprawna odpowiedz", true));
-            this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
+            //this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
+            //this.Odpowiedzi.Add(new Odpowiedz("Poprawna odpowiedz", true));
+            //this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
         }
         public Pytanie()
         {
@@ -27,11 +27,11 @@ namespace WpfApp6
             this.Odpowiedzi.Add(new Odpowiedz());
             this.Odpowiedzi.Add(new Odpowiedz());
         }
-        public Pytanie(string tresc, List<Odpowiedz> odpowiedzi)
-        {
-            this.tresc = tresc;
-            this.Odpowiedzi = new Collection<Odpowiedz>(odpowiedzi);
-        }
+        //public Pytanie(string tresc, Collection<Odpowiedz> odpowiedzi)
+        //{
+        //    this.tresc = tresc;
+        //    this.Odpowiedzi = odpowiedzi;
+        //}
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -32,12 +32,10 @@ namespace WpfApp6
         public MainWindow()
         {
             InitializeComponent();
-            List<Pytanie> zaladujPytania = new ImportPytan().Import();
-            zaladujPytania.ForEach(Pytania.Add);
-
-            Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
-            Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
-            Pytania.Add(new Pytanie("Przykladowe pytanie 3"));
+            new ImportPytan().Import(Pytania);
+            //Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
+            //Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
+            //Pytania.Add(new Pytanie("Przykladowe pytanie 3"));
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

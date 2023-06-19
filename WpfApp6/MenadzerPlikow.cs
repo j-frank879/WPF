@@ -10,31 +10,39 @@ namespace WpfApp6
 {
     public class ImportPytan
     {
-        List<Pytanie> pytania = new List<Pytanie>();
-
-        public List<Pytanie> Import()
+        public Collection<Pytanie> Import(Collection<Pytanie> pytania)
         {
             var lines = File.ReadLines(@"..\..\..\ZestawPytan.txt");
-            List<Pytanie> pytania = new List<Pytanie>();
+            //Collection<Pytanie> pytania = new Collection<Pytanie>();
 
             foreach (var line in lines)
             {
-                List<Odpowiedz> odpowiedzi = new List<Odpowiedz>();
+                //Collection<Odpowiedz> odpowiedzi = new Collection<Odpowiedz>();
                 string[] element = line.Split(";;");
+
+                Pytanie nowePytanie = new Pytanie(element[0]);
 
                 for (int i = 1; i < element.Length; i = i + 2)
                 {
                     Odpowiedz odpowiedz = new Odpowiedz(element[i], Convert.ToBoolean(element[i+1]));
-                    odpowiedzi.Add(odpowiedz);
-                    Console.WriteLine(odpowiedz.ToString());
+                    nowePytanie.Odpowiedzi.Add(odpowiedz);
                 }
 
-                Pytanie nowePytanie = new Pytanie(element[0], odpowiedzi);
+                //Pytanie nowePytanie = new Pytanie(element[0], odpowiedzi);
                 pytania.Add(nowePytanie);
 
             }
 
             return pytania;
+        }
+        public void Export(Collection<Pytanie> pytania)
+        {
+            List<Pytanie> pytaniaLista = pytania.ToList();
+            List<string> pytaniaPoFormacie = new List<string>();
+
+            
+
+       
         }
     }
 }
