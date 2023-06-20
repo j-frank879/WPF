@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,10 +31,11 @@ namespace WpfApp6
         public Collection<Pytanie> Pytania { get; } = new ObservableCollection<Pytanie>();
         public int wybranaLiczbaPytan;
         public int wybranaLiczbaTestow;
+        public string PlikImprtPytan;
         public MainWindow()
         {
             InitializeComponent();
-            new ImportPytan().Import(Pytania);
+            new ImportPytan().Import(Pytania, @"..\..\..\ZestawPytan.txt");
             //Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
             //Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
             //Pytania.Add(new Pytanie("Przykladowe pytanie 3"));
@@ -41,6 +44,27 @@ namespace WpfApp6
         {
             listaPytan.ItemsSource = Pytania;
 
+        }
+
+        private void WczytajPytania(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                PlikImprtPytan = openFileDialog.FileName;
+                new ImportPytan().Import(Pytania, PlikImprtPytan);
+            }
+
+        }
+        private void ZapiszPytania(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                new ImportPytan().Export(Pytania, saveFileDialog.FileName);
+            }
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -68,7 +92,7 @@ namespace WpfApp6
 
         private void dodajPytanieClick(object sender, RoutedEventArgs e)
         {
-            Pytania.Add(new Pytanie("Przykładowe pytanie"));
+            Pytania.Add(new Pytanie());
 
         }
 
