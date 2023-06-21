@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Syncfusion.DocIO.DLS;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +32,66 @@ namespace WpfApp6
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             testsList.ItemsSource = testy;
+        }
+
+        private void generujTestyDocx(object sender, RoutedEventArgs e)
+        {
+            foreach (var test in testy)
+            {
+            WordDocument document = new WordDocument();
+            //Adding a new section to the document.
+            WSection section = document.AddSection() as WSection;
+            IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+             paragraph.AppendText("Test "+test.Id);
+             paragraph = section.AddParagraph();
+                foreach(var pytanie in test.Pytania )
+                {
+                    paragraph.AppendText(pytanie.tresc);
+                    paragraph = section.AddParagraph();
+                    foreach(var odpowiedz in pytanie.Odpowiedzi)
+                    {
+                        paragraph.AppendText("○ "+odpowiedz.tresc);
+                        paragraph = section.AddParagraph();
+
+                    }
+                }
+              
+                document.Save("..\\..\\..\\Test-"+test.id+".docx");
+
+
+            }
+
+
+        }
+
+        private void generujKluczDocx(object sender, RoutedEventArgs e)
+        {
+            foreach (var test in testy)
+            {
+                WordDocument document = new WordDocument();
+                //Adding a new section to the document.
+                WSection section = document.AddSection() as WSection;
+                IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+                paragraph.AppendText("Test " + test.Id);
+                paragraph = section.AddParagraph();
+                foreach (var pytanie in test.Pytania)
+                {
+                    paragraph.AppendText(pytanie.tresc);
+                    paragraph = section.AddParagraph();
+                    foreach (var odpowiedz in pytanie.Odpowiedzi)
+                    {if(odpowiedz.poprawnosc)
+                        paragraph.AppendText("✔ " + odpowiedz.tresc);
+                        else paragraph.AppendText("☓" + odpowiedz.tresc);
+                        paragraph = section.AddParagraph();
+
+                    }
+                }
+              
+                document.Save("..\\..\\..\\Test-" + test.id + "-odp.docx");
+
+
+            }
+
         }
     }
 }

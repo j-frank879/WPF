@@ -54,7 +54,7 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Label  Padding="25 5 0 5" Margin="5" Content="Treść pytania:" Grid.Column="0" Grid.Row="0"/>
-                        <TextBox Text="{Binding Tresc}" Margin="5" Grid.Row="0" Grid.Column="1"/>
+                        <TextBox Text="{Binding Tresc,UpdateSourceTrigger=PropertyChanged}" Margin="5" Grid.Row="0" Grid.Column="1"/>
 
                         <ListBox Name="listaOdpowiedzi" ItemsSource="{Binding Odpowiedzi}" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
                             <ListBox.ItemTemplate>
