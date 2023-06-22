@@ -36,7 +36,7 @@ namespace WpfApp6
         public MainWindow()
         {
             InitializeComponent();
-            new ImportPytan().Import(Pytania, @"..\..\..\ZestawPytan.txt");
+            //new ImportPytan().Import(Pytania, @"..\..\..\ZestawPytan.txt");
             //Pytania.Add(new Pytanie("Przykladowe pytanie 1"));
             //Pytania.Add(new Pytanie("Przykladowe pytanie 2"));
             //Pytania.Add(new Pytanie("Przykladowe pytanie 3"));
@@ -124,7 +124,7 @@ namespace WpfApp6
         {
             if (listaPytan.SelectedIndex < 0)
                 return;
-            if (Pytania[listaPytan.SelectedIndex].Odpowiedzi.Count < 20)
+            if (Pytania[listaPytan.SelectedIndex].Odpowiedzi.Count < 10)
 
                 Pytania[listaPytan.SelectedIndex].Odpowiedzi.Add(new Odpowiedz());
            // else bladTextBlock.Text = "Nie można dodać więcej odpowiedzi. Maksymalna liczba odpowiedzi to 20.";
