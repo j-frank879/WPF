@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Syncfusion.DocIO.DLS;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -36,62 +37,83 @@ namespace WpfApp6
 
         private void generujTestyDocx(object sender, RoutedEventArgs e)
         {
-            foreach (var test in testy)
+            string dummyFileName = "Wybierz folder";
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.FileName = dummyFileName;
+
+            if (sf.ShowDialog() == true)
             {
-            WordDocument document = new WordDocument();
-            //Adding a new section to the document.
-            WSection section = document.AddSection() as WSection;
-            IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-             paragraph.AppendText("Test "+test.Id);
-             paragraph = section.AddParagraph();
-                foreach(var pytanie in test.Pytania )
+                string savePath = System.IO.Path.GetDirectoryName(sf.FileName);
+                foreach (var test in testy)
                 {
-                    paragraph.AppendText(pytanie.tresc);
+                    WordDocument document = new WordDocument();
+                    //Adding a new section to the document.
+                    WSection section = document.AddSection() as WSection;
+                    IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+                    paragraph.AppendText("Test " + test.Id);
                     paragraph = section.AddParagraph();
-                    foreach(var odpowiedz in pytanie.Odpowiedzi)
+                    foreach (var pytanie in test.Pytania)
                     {
-                        paragraph.AppendText("○ "+odpowiedz.tresc);
+                        paragraph.AppendText(pytanie.tresc);
                         paragraph = section.AddParagraph();
+                        foreach (var odpowiedz in pytanie.Odpowiedzi)
+                        {
+                            paragraph.AppendText("○ " + odpowiedz.tresc);
+                            paragraph = section.AddParagraph();
 
+                        }
                     }
+
+                    document.Save(savePath+"\\Test-" + test.id + ".docx");
                 }
-              
-                document.Save("..\\..\\..\\Test-"+test.id+".docx");
-
-
             }
-
-
         }
 
         private void generujKluczDocx(object sender, RoutedEventArgs e)
         {
-            foreach (var test in testy)
+            string dummyFileName = "Wybierz folder";
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.FileName = dummyFileName;
+
+            if (sf.ShowDialog() == true)
             {
-                WordDocument document = new WordDocument();
-                //Adding a new section to the document.
-                WSection section = document.AddSection() as WSection;
-                IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-                paragraph.AppendText("Test " + test.Id);
-                paragraph = section.AddParagraph();
-                foreach (var pytanie in test.Pytania)
+                string savePath = System.IO.Path.GetDirectoryName(sf.FileName);
+                foreach (var test in testy)
                 {
-                    paragraph.AppendText(pytanie.tresc);
+                    WordDocument document = new WordDocument();
+                    //Adding a new section to the document.
+                    WSection section = document.AddSection() as WSection;
+                    IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
+                    paragraph.AppendText("Test " + test.Id);
                     paragraph = section.AddParagraph();
-                    foreach (var odpowiedz in pytanie.Odpowiedzi)
-                    {if(odpowiedz.poprawnosc)
-                        paragraph.AppendText("✔ " + odpowiedz.tresc);
-                        else paragraph.AppendText("☓" + odpowiedz.tresc);
+                    foreach (var pytanie in test.Pytania)
+                    {
+                        paragraph.AppendText(pytanie.tresc);
                         paragraph = section.AddParagraph();
+                        foreach (var odpowiedz in pytanie.Odpowiedzi)
+                        {
+                            if (odpowiedz.poprawnosc)
+                                paragraph.AppendText("✔ " + odpowiedz.tresc);
+                            else paragraph.AppendText("☓" + odpowiedz.tresc);
+                            paragraph = section.AddParagraph();
 
+                        }
                     }
-                }
-              
-                document.Save("..\\..\\..\\Test-" + test.id + "-odp.docx");
 
+                    document.Save(savePath+"\\Test-" + test.id + "-odp.docx");
+                }
 
             }
 
+        }
+        private void ZapiszTesty(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                new ImportPytan().ExportTest(testy, saveFileDialog.FileName);
+            }
         }
     }
 }

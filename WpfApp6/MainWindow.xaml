@@ -15,7 +15,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Wczytaj pliki">
                     <MenuItem Header="_Wczytaj listę pytań" Click="WczytajPytania"/>
-                    <MenuItem Header="_Wczytaj test" />
+                    <MenuItem Header="_Wczytaj test" Click="WczytajTesty"/>
                 </MenuItem>
                 <MenuItem Header="_Zapisz listę pytań" Click="ZapiszPytania">
                 </MenuItem>
