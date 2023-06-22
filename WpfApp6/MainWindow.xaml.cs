@@ -81,9 +81,7 @@ namespace WpfApp6
             {
                 wybranaLiczbaPytan = Int32.Parse(generacjaTestowWindow.l_PytanTextBox.Text);
                 wybranaLiczbaTestow = Int32.Parse(generacjaTestowWindow.l_TestowTextBox.Text);
-                //generacja testow
-                Collection<Test> tests = generujTesty();
-                TestsWindow testsWindow = new TestsWindow(tests);
+                TestsWindow testsWindow = new TestsWindow(wybranaLiczbaTestow, wybranaLiczbaPytan, Pytania);
                 testsWindow.Show();
             }
 
@@ -123,42 +121,7 @@ namespace WpfApp6
            // else bladTextBlock.Text = "Nie można usunąć odpowiedzi. Minimalna liczba odpowiedzi to 2.";
 
         }
-        private Collection<Test> generujTesty()
-        { Collection<Test> testy=new ObservableCollection<Test>();
-            Random rnd=new Random();
-            //petla testow
-            for (int i = 0; i < wybranaLiczbaTestow; i++)
-            {
-                Collection<Pytanie> pytaniaTestu = new ObservableCollection<Pytanie>();
-                Collection<Pytanie> tmp_pytania = new ObservableCollection<Pytanie>(Pytania);
-                //petla pytan
-                for (int j = 0;j<wybranaLiczbaPytan;j++)
-                {
-                    int randPytanie = rnd.Next(0, tmp_pytania.Count - 1);
-                    Pytanie p = tmp_pytania[randPytanie];
-
-                    Collection<Odpowiedz> odpowiedziPytania = new ObservableCollection<Odpowiedz>();
-                    int p_count = p.Odpowiedzi.Count;
-                    //petla odpowiedzi
-                    for (int k = 0; k < p_count; k++)
-                    {
-                        int randOdpowiedz = rnd.Next(0, p.Odpowiedzi.Count-1);
-
-                        odpowiedziPytania.Add(p.Odpowiedzi[randOdpowiedz]);
-                        p.Odpowiedzi.RemoveAt(randOdpowiedz);
-
-                    }
-                    p.Odpowiedzi = odpowiedziPytania;
-
-                    pytaniaTestu.Add(p);
-                    tmp_pytania.RemoveAt(randPytanie);
-
-                }
-                testy.Add(new Test(pytaniaTestu, i));
-            }
-            
-            return testy;
-        }
+        
     }
 }
     

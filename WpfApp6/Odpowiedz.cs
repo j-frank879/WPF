@@ -15,11 +15,15 @@ namespace WpfApp6
         public bool poprawnosc;
         public bool Poprawnosc { get { return poprawnosc; } set { poprawnosc = value; } }
 
-            public Odpowiedz(string tresc,bool poprawnosc)
-            {
-                this.tresc = tresc;
+        public bool zaznaczona;
+        public bool Zaznaczona { get { return zaznaczona; } set { zaznaczona = value; } }
+
+
+        public Odpowiedz(string tresc, bool poprawnosc)
+        {
+            this.tresc = tresc;
             this.poprawnosc = poprawnosc;
-            }
+        }
 
         public Odpowiedz()
         {

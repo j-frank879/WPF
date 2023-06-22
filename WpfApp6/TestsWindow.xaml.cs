@@ -3,6 +3,7 @@ using Syncfusion.DocIO.DLS;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,15 +24,15 @@ namespace WpfApp6
     /// </summary>
     public partial class TestsWindow : Window
     {
-        ObservableCollection<Test> testy { get; } = new ObservableCollection<Test>();
-        public TestsWindow(Collection<Test> testy)
+        public ObservableCollection<Test> testy { get; set; } = new ObservableCollection<Test>();
+        public TestsWindow(int wybranaLiczbaTestow, int wybranaLiczbaPytan, Collection<Pytanie> Pytania)
         {
-            this.testy = (ObservableCollection<Test>?)testy;
             InitializeComponent();
+            generujTesty(wybranaLiczbaTestow, wybranaLiczbaPytan, Pytania);
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void updateIndeksy()
         {
-            testsList.ItemsSource = testy;
+            for(int i = 1; i <= testy.Count; i++) { testy[i-1].Name = "Test " + (i);  }
         }
 
         private void generujTestyDocx(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace WpfApp6
             //Adding a new section to the document.
             WSection section = document.AddSection() as WSection;
             IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-             paragraph.AppendText("Test "+test.Id);
+             paragraph.AppendText(test.Name);
              paragraph = section.AddParagraph();
                 foreach(var pytanie in test.Pytania )
                 {
@@ -56,12 +57,47 @@ namespace WpfApp6
                     }
                 }
               
-                document.Save("..\\..\\..\\Test-"+test.id+".docx");
+                document.Save("..\\..\\..\\Test-"+ testy.IndexOf(test) + ".docx");
 
 
             }
             MessageBox.Show("Wygenerowano testy");
 
+        }
+
+        private void generujTesty(int wybranaLiczbaTestow, int wybranaLiczbaPytan, Collection<Pytanie> Pytania)
+        {
+            Random rnd = new Random();
+            //petla testow
+            for (int i = 0; i < wybranaLiczbaTestow; i++)
+            {
+                Collection<Pytanie> pytaniaTestu = new ObservableCollection<Pytanie>();
+                Collection<Pytanie> tmp_pytania = new ObservableCollection<Pytanie>(Pytania);
+                //petla pytan
+                for (int j = 0; j < wybranaLiczbaPytan; j++)
+                {
+                    int randPytanie = rnd.Next(0, tmp_pytania.Count - 1);
+                    Pytanie p = tmp_pytania[randPytanie];
+
+                    Collection<Odpowiedz> odpowiedziPytania = new ObservableCollection<Odpowiedz>();
+                    int p_count = p.Odpowiedzi.Count;
+                    //petla odpowiedzi
+                    for (int k = 0; k < p_count; k++)
+                    {
+                        int randOdpowiedz = rnd.Next(0, p.Odpowiedzi.Count - 1);
+
+                        odpowiedziPytania.Add(p.Odpowiedzi[randOdpowiedz]);
+                        p.Odpowiedzi.RemoveAt(randOdpowiedz);
+
+                    }
+                    p.Odpowiedzi = odpowiedziPytania;
+
+                    pytaniaTestu.Add(p);
+                    tmp_pytania.RemoveAt(randPytanie);
+
+                }
+                testy.Add(new Test(pytaniaTestu, i));
+            }
         }
 
         private void generujKluczDocx(object sender, RoutedEventArgs e)
@@ -72,7 +108,7 @@ namespace WpfApp6
                 //Adding a new section to the document.
                 WSection section = document.AddSection() as WSection;
                 IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-                paragraph.AppendText("Test " + test.Id);
+                paragraph.AppendText(test.Name);
                 paragraph = section.AddParagraph();
                 foreach (var pytanie in test.Pytania)
                 {
@@ -87,12 +123,61 @@ namespace WpfApp6
                     }
                 }
               
-                document.Save("..\\..\\..\\Test-" + test.id + "-odp.docx");
+                document.Save("..\\..\\..\\Test-" + testy.IndexOf(test) + "-odp.docx");
                
 
             }
             MessageBox.Show("Wygenerowano klucz odpowiedzi do testów.");
 
+        }
+
+        private void UsunTest_Click(object sender, RoutedEventArgs e)
+        {
+            if (listaTestow.SelectedIndex >= 0)
+            {
+                testy.RemoveAt(listaTestow.SelectedIndex);
+                updateIndeksy();
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            listaTestow.ItemsSource = testy;
+        }
+
+        private void ZaznaczOdpowiedzi_Click(object sender, RoutedEventArgs e)
+        {
+            if (listaTestow.SelectedIndex >= 0)
+            {
+                foreach (var pytanie in testy[listaTestow.SelectedIndex].Pytania)
+                {
+                    foreach (var odpowiedz in pytanie.Odpowiedzi)
+                    {
+                        if(odpowiedz.Poprawnosc)
+                        odpowiedz.Zaznaczona = true;
+                    }
+                }
+                var temp = listaTestow.SelectedIndex;
+                listaTestow.SelectedIndex = -1;
+                listaTestow.SelectedIndex = temp;
+            }
+        }
+
+        private void UkryjOdpowiedzi_Click(object sender, RoutedEventArgs e)
+        {
+            if (listaTestow.SelectedIndex >= 0)
+            { 
+                foreach(var pytanie in testy[listaTestow.SelectedIndex].Pytania)
+                {
+                    foreach(var odpowiedz in  pytanie.Odpowiedzi)
+                    {
+                        odpowiedz.Zaznaczona = false;
+                    }
+                }
+                var temp = listaTestow.SelectedIndex;
+                listaTestow.SelectedIndex = -1;
+                listaTestow.SelectedIndex = temp;
+            }
         }
     }
 }

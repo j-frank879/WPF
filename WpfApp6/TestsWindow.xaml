@@ -33,14 +33,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <ListBox Name="testsList" Margin="10" DisplayMemberPath="Display" SelectedIndex="0"></ListBox>
-            <GroupBox Name="test" Margin="0 15 0 0" Grid.Column="1" Header="{Binding Display}" DataContext="{Binding ElementName=testsList, Path=SelectedItem}">
+            <ListBox Name="listaTestow" Margin="10" DisplayMemberPath="Name" SelectedIndex="0"></ListBox>
+            <GroupBox Name="test" Margin="0 15 0 0" Grid.Column="1" Header="{Binding Name
+                }" DataContext="{Binding ElementName=listaTestow, Path=SelectedItem}">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" >
+                        <DockPanel>
+                            <Button x:Name="ZaznaczOdpowiedzi" DockPanel.Dock="Right" Content="Zaznacz odpowiedzi" Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ZaznaczOdpowiedzi_Click" />
+                            <Button x:Name="UkryjOdpowiedzi" DockPanel.Dock="Right" Content="Ukryj odpowiedzi" Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="UkryjOdpowiedzi_Click" />
+                        </DockPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" >
                         <ScrollViewer>
                             <ItemsControl  Name="testPytania" ItemsSource="{Binding Pytania}" >
                                 <ItemsControl.ItemTemplate>
@@ -48,15 +56,11 @@
                                         <StackPanel Orientation="Vertical">
                                             <Label Content="{Binding ID}" Margin="10 0 10 0"/>
                                             <Label Content="{Binding Tresc}" Margin="10 0 10 0"/>
-                                            <!--<StackPanel Orientation="Horizontal">
-                                                <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
-                                                <CheckBox Margin="10 0 10 0">odpowiedź</CheckBox>
-                                            </StackPanel>-->
                                             <ItemsControl  Name="listaOdpowiedzi" ItemsSource="{Binding Odpowiedzi}" Grid.Row="1" Grid.ColumnSpan="2" Margin="5">
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
                                                         <WrapPanel>
-                                                            <CheckBox IsHitTestVisible="false" IsChecked="False"  Margin="5" />
+                                                            <CheckBox Name="odpowiedzCheckBox" IsHitTestVisible="false" IsChecked="{Binding Zaznaczona}"  Margin="5" />
                                                             <Label  Margin="5" Content="{Binding Tresc}" VerticalAlignment="Stretch" />
                                                         </WrapPanel>
                                                     </DataTemplate>
@@ -68,8 +72,8 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </Grid>
-                    <Grid Grid.Row="1">
-                        <!--<Button Content="Dodaj " Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
+                    <Grid Grid.Row="2">
+                        <Button x:Name="UsunTest" Content="Usuń test" Padding="10 5" Margin="10 " HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="UsunTest_Click"/>
                     </Grid>
                 </Grid>
             </GroupBox>
