@@ -49,6 +49,7 @@ namespace WpfApp6
         {
             List<Pytanie> pytaniaLista = pytania.ToList();
             List<string> pytaniaPoFormacie = new List<string>();
+            pytaniaPoFormacie.Add("To jest nagłówek pliku z pytaniami do projektu z WPF, jeżeli plik nie ma tej lini to jest nie kompatybilny z programem");
             pytaniaLista.ForEach(pytaniaLista => { pytaniaPoFormacie.Add(pytaniaLista.ExportToTxt()); });
             File.WriteAllLines(SciezkaDoPliku,pytaniaPoFormacie);
         }
@@ -98,6 +99,7 @@ namespace WpfApp6
         {
             List<string> pytaniaPoFormacie = new List<string>();
             List<Test> testyLista = testy.ToList();
+            pytaniaPoFormacie.Add("To jest nagłówek pliku z testami do projektu z WPF, jeżeli plik nie ma tej lini to jest nie kompatybilny z programem");
 
             testyLista.ForEach(test => {
                 List<Pytanie> pytaniaLista = test.Pytania.ToList();
