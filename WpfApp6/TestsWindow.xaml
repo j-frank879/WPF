@@ -15,9 +15,9 @@
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Zapisz testy" Click="ZapiszTesty"/>
-                <MenuItem Header="_Eksport do docx">
-                    <MenuItem Header="_Eksport testow" Click="generujTestyDocx"/>
-                    <MenuItem Header="_Eksport klucza do testow" Click="generujKluczDocx"/>
+                <MenuItem Header="_Eksportuj do docx">
+                    <MenuItem Header="_Eksportuj testy" Click="generujTestyDocx"/>
+                    <MenuItem Header="_Eksportuj klucze odpowiedzi" Click="generujKluczDocx"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

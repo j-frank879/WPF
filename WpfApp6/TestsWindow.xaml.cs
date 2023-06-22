@@ -31,6 +31,11 @@ namespace WpfApp6
             InitializeComponent();
             generujTesty(wybranaLiczbaTestow, wybranaLiczbaPytan, Pytania);
         }
+        public TestsWindow(ObservableCollection<Test> testy)
+        {
+            InitializeComponent();
+            this.testy = testy;
+        }
         private void updateIndeksy()
         {
             for(int i = 1; i <= testy.Count; i++) { testy[i-1].Name = "Test " + (i);  }
@@ -51,7 +56,7 @@ namespace WpfApp6
                     //Adding a new section to the document.
                     WSection section = document.AddSection() as WSection;
                     IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-                    paragraph.AppendText("Test " + test.Id);
+                    paragraph.AppendText(test.Name);
                     paragraph = section.AddParagraph();
                     foreach (var pytanie in test.Pytania)
                     {
@@ -65,7 +70,7 @@ namespace WpfApp6
                         }
                     }
 
-                    document.Save(savePath+"\\Test-" + test.id + ".docx");
+                    document.Save(savePath+"\\Test-" + testy.IndexOf(test) + ".docx");
                 }
             }
             MessageBox.Show("Wygenerowano testy");
@@ -122,7 +127,7 @@ namespace WpfApp6
                     //Adding a new section to the document.
                     WSection section = document.AddSection() as WSection;
                     IWParagraph paragraph = section.HeadersFooters.Header.AddParagraph();
-                    paragraph.AppendText("Test " + test.Id);
+                    paragraph.AppendText(test.Name);
                     paragraph = section.AddParagraph();
                     foreach (var pytanie in test.Pytania)
                     {
@@ -138,7 +143,7 @@ namespace WpfApp6
                         }
                     }
 
-                    document.Save(savePath+"\\Test-" + test.id + "-odp.docx");
+                    document.Save(savePath+"\\Test-" + testy.IndexOf(test) + "-odp.docx");
                 }
 
             }

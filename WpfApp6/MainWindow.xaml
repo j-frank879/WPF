@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="337" MinWidth="600" Loaded="Window_Loaded">
+        Title="Lista pytań" Height="450" Width="800" MinHeight="337" MinWidth="600" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -15,7 +15,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Wczytaj pliki">
                     <MenuItem Header="_Wczytaj listę pytań" Click="WczytajPytania"/>
-                    <MenuItem Header="_Wczytaj test" Click="WczytajTesty"/>
+                    <MenuItem Header="_Wczytaj testy" Click="WczytajTesty"/>
                 </MenuItem>
                 <MenuItem Header="_Zapisz listę pytań" Click="ZapiszPytania">
                 </MenuItem>
@@ -35,7 +35,7 @@
             <ListBox Name="listaPytan" Margin="10" DisplayMemberPath="Display"></ListBox>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <WrapPanel Grid.Row="0" Margin="0 10 0 0">

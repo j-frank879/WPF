@@ -1,7 +1,0 @@
-﻿To jest nagłówek pliku z pytaniami do projektu z WPF, jeżeli plik nie ma tej lini to jest nie kompatybilny z programem
-Pytanie pierwsze;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
-Pytanie drugie;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
-Pytanie trzecie;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true
-Pytanie czwarte;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false;;Odpowiedź piąta;;true
-Pytanie piąte;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true;;Odpowiedź czwarta;;false
-Pytanie szóste;;Odpowiedź pierwsza;;true;;Odpowiedź druga;;false;;Odpowiedź trzecia;;true
