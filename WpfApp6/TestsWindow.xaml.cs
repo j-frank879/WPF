@@ -60,7 +60,7 @@ namespace WpfApp6
 
 
             }
-
+            MessageBox.Show("Wygenerowano testy");
 
         }
 
@@ -88,9 +88,10 @@ namespace WpfApp6
                 }
               
                 document.Save("..\\..\\..\\Test-" + test.id + "-odp.docx");
-
+               
 
             }
+            MessageBox.Show("Wygenerowano klucz odpowiedzi do testów.");
 
         }
     }
