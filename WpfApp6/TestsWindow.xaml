@@ -14,13 +14,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
-                </MenuItem>
+                <MenuItem Header="_Zapisz testy" Click="ZapiszTesty"/>
                 <MenuItem Header="_Eksport do docx">
                     <MenuItem Header="_Eksport testow" Click="generujTestyDocx"/>
                     <MenuItem Header="_Eksport klucza do testow" Click="generujKluczDocx"/>

@@ -32,6 +32,7 @@ namespace WpfApp6
         public int wybranaLiczbaPytan;
         public int wybranaLiczbaTestow;
         public string PlikImprtPytan;
+        public string PlikImprtTest;
         public MainWindow()
         {
             InitializeComponent();
@@ -66,7 +67,23 @@ namespace WpfApp6
                 new ImportPytan().Export(Pytania, saveFileDialog.FileName);
             }
         }
+        private void WczytajTesty(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ObservableCollection<Test> tests = new ObservableCollection<Test>();
+            
+                PlikImprtTest = openFileDialog.FileName;
+                if (new ImportPytan().ImportTest(tests, PlikImprtTest) != null)
+                {
+                    TestsWindow testsWindow = new TestsWindow(tests);
+                    testsWindow.Show();
+                }
+            }
 
+        }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
