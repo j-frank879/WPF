@@ -67,6 +67,8 @@ namespace WpfApp6
                     document.Save(savePath+"\\Test-" + test.id + ".docx");
                 }
             }
+            MessageBox.Show("Wygenerowano testy");
+
         }
 
         private void generujKluczDocx(object sender, RoutedEventArgs e)
@@ -104,6 +106,7 @@ namespace WpfApp6
                 }
 
             }
+            MessageBox.Show("Wygenerowano klucz odpowiedzi do testów.");
 
         }
         private void ZapiszTesty(object sender, RoutedEventArgs e)

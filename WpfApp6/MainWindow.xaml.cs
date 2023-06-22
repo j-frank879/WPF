@@ -132,7 +132,7 @@ namespace WpfApp6
 
         private void usunOdpowiedzClick(object sender, RoutedEventArgs e)
         {
-            if (listaPytan.SelectedIndex < 0 || listaPytan.SelectedIndex < 0)
+            if (listaPytan.SelectedIndex < 0 || listaOdpowiedzi.SelectedIndex < 0)
                 return;
             if (Pytania[listaPytan.SelectedIndex].Odpowiedzi.Count > 2)
 
