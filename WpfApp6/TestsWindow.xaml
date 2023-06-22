@@ -21,8 +21,9 @@
                     <Separator />
                     <MenuItem Header="_Exit" />
                 </MenuItem>
-                <MenuItem Header="_Print">
-                    <MenuItem Header="_Print"/>
+                <MenuItem Header="_Eksport do docx">
+                    <MenuItem Header="_Eksport testow" Click="generujTestyDocx"/>
+                    <MenuItem Header="_Eksport klucza do testow" Click="generujKluczDocx"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

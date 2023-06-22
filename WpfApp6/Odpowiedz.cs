@@ -35,6 +35,9 @@ namespace WpfApp6
                     new PropertyChangedEventArgs(property));
             }
             
-        
+        public string ExportToTxt()
+        {
+            return ";;" + this.tresc + ";;" + this.poprawnosc.ToString();
+        }
     }
 }

@@ -10,9 +10,10 @@ namespace WpfApp6
 {
     public class ImportPytan
     {
-        public Collection<Pytanie> Import(Collection<Pytanie> pytania)
+        public Collection<Pytanie> Import(Collection<Pytanie> pytania, string SciezkaDoPliku)
         {
-            var lines = File.ReadLines(@"..\..\..\ZestawPytan.txt");
+            var lines = File.ReadLines(SciezkaDoPliku);
+            //var lines = File.ReadLines(@"..\..\..\ZestawPytan.txt");
             //Collection<Pytanie> pytania = new Collection<Pytanie>();
 
             foreach (var line in lines)
@@ -35,11 +36,12 @@ namespace WpfApp6
 
             return pytania;
         }
-        public void Export(Collection<Pytanie> pytania)
+        public void Export(Collection<Pytanie> pytania, string SciezkaDoPliku)
         {
             List<Pytanie> pytaniaLista = pytania.ToList();
             List<string> pytaniaPoFormacie = new List<string>();
-
+            pytaniaLista.ForEach(pytaniaLista => { pytaniaPoFormacie.Add(pytaniaLista.ExportToTxt()); });
+            File.WriteAllLines(SciezkaDoPliku,pytaniaPoFormacie);
             
 
        

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,9 +24,12 @@ namespace WpfApp6
         }
         public Pytanie()
         {
-
-            this.Odpowiedzi.Add(new Odpowiedz());
-            this.Odpowiedzi.Add(new Odpowiedz());
+            this.tresc = "Przykładowe pytanie";
+            this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
+            this.Odpowiedzi.Add(new Odpowiedz("Poprawna odpowiedz", true));
+            this.Odpowiedzi.Add(new Odpowiedz("Niepoprawna odpowiedz", false));
+            //this.Odpowiedzi.Add(new Odpowiedz());
+            //this.Odpowiedzi.Add(new Odpowiedz());
         }
         //public Pytanie(string tresc, Collection<Odpowiedz> odpowiedzi)
         //{
@@ -52,6 +56,14 @@ namespace WpfApp6
                 return tresc;
             }
 
+        }
+        
+        public string ExportToTxt()
+        {
+            string PrzygotowanieDoExportu = this.tresc;
+            List<Odpowiedz> OdpowiedziLista = this.Odpowiedzi.ToList();
+            OdpowiedziLista.ForEach(odpowiedzi => {PrzygotowanieDoExportu += odpowiedzi.ExportToTxt(); });
+            return PrzygotowanieDoExportu;
         }
     }
 }
